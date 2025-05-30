@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!-- Root layout using BorderPane for five major regions: top, left, right, center, bottom -->
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.Controller">
+
+    <!-- ========== TOP: Search bar and buttons ========== -->
+    <top>
+        <HBox spacing="10">
+            <!-- Padding around the HBox -->
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- TextField for entering a search query -->
+            <TextField fx:id="searchField" promptText="Search for a song..." HBox.hgrow="ALWAYS"/>
+
+            <!-- Button to trigger song search -->
+            <Button text="Search" onAction="#handleSearch"/>
+
+            <!-- Spacer to push buttons to the right -->
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Button to reset the app view to default -->
+            <Button text="Home" onAction="#handleHome"/>
+
+            <!-- Button to trigger the login process -->
+            <Button text="Log In" onAction="#handleLogin"/>
+        </HBox>
+    </top>
+
+    <!-- ========== LEFT: Artist filter list ========== -->
+    <left>
+        <VBox spacing="10" BorderPane.alignment="CENTER_LEFT">
+            <!-- Padding around the VBox -->
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Label above the artist list -->
+            <Label text="Artists"/>
+
+            <!-- ListView to display all artists for filtering -->
+            <ListView fx:id="artistList"/>
+        </VBox>
+    </left>
+
+    <!-- ========== RIGHT: Genre filter list ========== -->
+    <right>
+        <VBox spacing="10" BorderPane.alignment="CENTER_RIGHT">
+            <!-- Padding around the VBox -->
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Label above the genre list -->
+            <Label text="Genres"/>
+
+            <!-- ListView to display all genres for filtering -->
+            <ListView fx:id="genreList"/>
+        </VBox>
+    </right>
+
+    <!-- ========== CENTER: Songs table and rating buttons ========== -->
+    <center>
+        <VBox spacing="10" BorderPane.alignment="CENTER">
+            <!-- Padding around the VBox -->
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Title label for song section -->
+            <Label text="Songs" />
+
+            <!-- TableView showing the list of songs -->
+            <TableView fx:id="songTable" VBox.vgrow="ALWAYS" prefHeight="400">
+                <columns>
+                    <!-- Column for song title -->
+                    <TableColumn fx:id="titleColumn" text="Title" prefWidth="200"/>
+                    <!-- Column for artist name -->
+                    <TableColumn fx:id="artistColumn" text="Artist" prefWidth="200"/>
+                    <!-- Column for album name -->
+                    <TableColumn fx:id="albumColumn" text="Album" prefWidth="200"/>
+                </columns>
+            </TableView>
+
+            <!-- HBox containing buttons for rating actions -->
+            <HBox alignment="CENTER" spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <!-- Button to rate a selected song -->
+                <Button text="Rate Song" onAction="#handleRateSong"/>
+
+                <!-- Button to delete an existing rating -->
+                <Button text="Delete Rating" onAction="#handleDeleteRating" />
+
+                <!-- Button to update an existing rating -->
+                <Button text="Update Rating" onAction="#handleUpdateRating" />
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>
